@@ -1,10 +1,23 @@
-import { Draggable, DragDropContext, Droppable } from "@hello-pangea/dnd";
+import { DragDropContext, Draggable, Droppable } from "@hello-pangea/dnd";
 
 function App() {
   const onDragEnd = () => {};
   return (
     <DragDropContext onDragEnd={onDragEnd}>
-      <span>hello</span>
+      <div>
+        <Droppable droppableId="one">
+          {() => (
+            <ul>
+              <Draggable draggableId="first" index={0}>
+                {() => <li>One</li>}
+              </Draggable>
+              <Draggable draggableId="second" index={1}>
+                {() => <li>Two</li>}
+              </Draggable>
+            </ul>
+          )}
+        </Droppable>
+      </div>
     </DragDropContext>
   );
 }
